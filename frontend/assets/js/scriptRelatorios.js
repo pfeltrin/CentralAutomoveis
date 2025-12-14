@@ -9,7 +9,8 @@ if (btnVoltar) {
 // === BUSCAR DADOS DO BACKEND ===
 async function carregarRelatorio() {
     try {
-        const res = await fetch("http://localhost:3000/relatorio");
+        const res = await fetch("/relatorio");
+        if (!res.ok) throw new Error("Resposta inválida do servidor");
         const data = await res.json();
         return data;
     } catch (err) {
