@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Veículos - Central Automóveis</title>
+    <link rel="stylesheet" href="/assets/css/styleCadastro.css">
+</head>
+<body>
+    <header>Sistema Central Automóveis</header>
+
+    <div class="form-container">
+        <h2>Cadastro de Veículos</h2>
+
+        <form id="formCadastro" action="">
+            
+            <div class="form-group">
+                <label for="marca">Marca:</label>
+                <input type="text" id="marca" class="toUpper" name="marca">
+            </div>
+
+            <div class="form-group">
+                <label for="modelo">Modelo:</label>
+                <input type="text" id="modelo" class="toUpper" name="modelo">
+            </div>
+
+            <div class="form-group">
+                <label for="ano">Ano:</label>
+                <input type="number" id="ano" name="ano" min="1900" max="2099">
+            </div>
+
+            <div class="form-group">
+                <label for="placa">Placa:</label>
+                <input type="text" id="placa" class="toUpper" name="placa" maxlength="7" placeholder="ABC1D23">
+            </div>
+
+            <div class="form-group">
+                <label for="cor">Cor:</label>
+                <input type="text" id="cor" class="toUpper" name="cor">
+            </div>
+
+            <div class="form-group">
+                <label for="valor">Valor:</label>
+                <input type="text" id="valor" name="valor">
+            </div>
+
+
+            <div class="form-group">
+                <label for="cambio">Tipo de câmbio:</label>
+                <select id="cambio" name="cambio">
+                    <option value="">Selecione...</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automático">Automático</option>
+                    <option value="Automatizado">Automatizado</option>
+                    <option value="CVT">CVT</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="obs">Observações:</label>
+                <textarea id="obs" name="obs"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="foto">Foto do veículo:</label>
+                <input type="file" id="foto" name="foto" accept="image/*">
+            </div>
+
+            <div class="btnSalvar2">
+                <button type="submit" id="btnSalvar">Salvar</button>
+            </div>
+        </form>
+    </div>
+
+    <main>
+        <button id="btnVoltar" type="button">Voltar ao Menu</button>
+    </main>
+
+    <footer><p>Central Automóveis</p></footer>
+
+    <script src="/assets/js/scriptCadastro.js"></script>
+</body>
+</html>

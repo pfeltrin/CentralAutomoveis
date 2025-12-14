@@ -1,0 +1,72 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff; /* fundo branco */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header estilo automotivo */
+header {
+    background: linear-gradient( to bottom, #fc0000 70%, #111111 );
+    color: #ffffff;
+    text-align: center;
+    padding: 28px 0;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 4px solid #B00000; /* vermelho igual à fachada */
+    text-shadow: 0 0 6px #000;
+}
+
+/* Container dos botões */
+#buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+    margin-top: 50px;
+}
+
+/* Botões */
+#buttons button {
+    width: 270px;
+    padding: 16px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 6px;
+    background-color: #000; /* vermelho da fachada */
+    color: #ffffff;
+    cursor: pointer;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: 0.2s ease-in-out;
+    box-shadow: 0px 3px 6px rgba(0,0,0,0.3);
+}
+
+#buttons button:hover {
+    background-color: #B00000; /* vermelho mais escuro */
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 3px solid #E00000; 
+}

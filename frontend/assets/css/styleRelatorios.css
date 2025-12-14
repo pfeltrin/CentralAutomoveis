@@ -1,0 +1,145 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #ffffff; /* fundo branco */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Container */
+#relatorioContainer {
+    width: 90%;
+    margin: 30px auto;
+    padding: 20px;
+    background: #f2f2f2;
+    border: 2px solid #000;
+    border-radius: 8px;
+}
+
+/* Header estilo automotivo */
+header {
+    background: linear-gradient( to bottom, #000000 70%, #111111 );
+    color: #ffffff;
+    text-align: center;
+    width: 100%;
+    padding: 28px 0;
+    font-size: 30px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-bottom: 4px solid #B00000; /* vermelho igual à fachada */
+    text-shadow: 0 0 6px #000;
+}
+
+#relatorioContainer h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Botões */
+
+#btnVoltar {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+    text-align: center;
+    padding: 10px 20px;
+    width: 400px;
+    height: 40px;
+    background-color: rgb(0, 0, 0);
+    color: #ccc;
+    border: white;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#btnGerarRelatorio,
+#btnDownloadCSV {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+#btnGerarRelatorio:hover,
+#btnDownloadCSV:hover {
+    background: #B00000;
+}
+
+#btnVoltar:hover {
+    background: #800000;
+}
+
+/* Tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 25px;
+    background: white;
+}
+
+#relatorioConteudo h3 {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+
+th, td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background: #B00000;
+    color: #fff;
+}
+
+.fotoRelatorio {
+    width: 90px;
+    height: 70px;
+    object-fit: cover;
+}
+
+/* FOOTER */
+footer {
+    background: #000000;
+    color: #ffffff;
+    text-align: center;
+    padding: 14px 0;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-top: 3px solid #E00000; 
+    width: 100%;
+    margin-top: 20px;
+}
+
+@media (max-width:600px){
+    .formCadastro{
+        width: 80vw;
+    }
+    input,textarea{
+        padding: 6px;
+    }
+    button{
+        padding: 8px 16px;
+    }
+}
