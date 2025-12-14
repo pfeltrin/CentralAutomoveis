@@ -110,10 +110,6 @@ app.get("/", auth, (req, res) => {
     res.sendFile(path.join(frontPath, "pages", "index.html"));
 });
 
-app.get("/cadastro", auth, (req, res) => {
-    res.sendFile(path.join(frontPath, "pages", "cadastro.html"));
-});
-
 app.get("/estoque", auth, (req, res) => {
     res.sendFile(path.join(frontPath, "pages", "estoque.html"));
 });
@@ -124,6 +120,10 @@ app.get("/relatorios", auth, (req, res) => {
 
 app.get("/vendidos", auth, (req, res) => {
     res.sendFile(path.join(frontPath, "pages", "vendidos.html"));
+});
+
+app.get("/cadastro", auth, (req, res) => {
+    res.sendFile(path.join(frontPath, "pages", "cadastro.html"));
 });
 
 function authApi(req, res, next) {
