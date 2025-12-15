@@ -3,22 +3,31 @@ document.getElementById("formLogin").addEventListener("submit", async (e) => {
 
     const email = document.getElementById("email").value;
     const senha = document.getElementById("senha").value;
+    const msg = document.getElementById("msgErro");
 
-    const res = await fetch("/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include", // MUITO IMPORTANTE
-        body: JSON.stringify({ email, senha })
-    });
+    msg.textContent = "";
 
-    const data = await res.json();
+    try {
+        const res = await fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ email, senha })
+        });
 
-    if (res.ok && data.sucesso) {
-        window.location.href = "/"; // 🔥 REDIRECIONA
-    } if (document.referrer && document.referrer.includes("/login")) {
-    history.replaceState(null, "", "/");
-    } else {
-        alert(data.erro || "Erro no login");
+        const data = await res.json();
+
+        if (!res.ok) {
+            msg.textContent = data.erro || "Login inválido";
+            return;
+        }
+
+        // ✅ LOGIN OK
+        window.location.href = "/";
+
+    } catch (err) {
+        console.error(err);
+        msg.textContent = "Erro ao conectar com o servidor";
     }
-
 });
