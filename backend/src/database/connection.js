@@ -1,54 +1,34 @@
 require("dotenv").config();
 const { Pool } = require("pg");
 
-// -----------------------------
-// 🛠 CONFIGURAÇÃO DO POOL
-// -----------------------------
 const pool = new Pool({
-  host: process.env.PGHOST,
-  user: process.env.PGUSER,
-  password: process.env.PGPASSWORD,
-  database: process.env.PGDATABASE,
-  port: Number(process.env.PGPORT),
-  max: 10,
-  idleTimeoutMillis: 30000,
-
-  // ⭐ OBRIGATÓRIO PARA Render
+  connectionString: process.env.DATABASE_URL,
   ssl: {
-    rejectUnauthorized: false  // Adiciona SSL para garantir a conexão no Render
+    rejectUnauthorized: false
   }
 });
 
-// -----------------------------
-// ❗ ERRO NO CLIENTE OCIOSO
-// -----------------------------
+// Log de erro do pool
 pool.on("error", (err) => {
-  console.error("Erro inesperado no cliente PostgreSQL:", err.message);
+  console.error("❌ Erro inesperado no PostgreSQL:", err.message);
 });
 
-// -----------------------------
-// 🔄 FUNÇÃO PADRÃO DE CONSULTA
-// -----------------------------
+// Função de query
 async function query(text, params) {
-  try {
-    const result = await pool.query(text, params);
-    return result;
-  } catch (err) {
-    console.error("Erro na query PostgreSQL:", err.message, "\nSQL:", text);
-    throw err;
-  }
+  return pool.query(text, params);
 }
 
-// -----------------------------
-// 🔌 TESTE AUTOMÁTICO DE CONEXÃO
-// -----------------------------
+// Teste de conexão
 (async () => {
   try {
-    const r = await pool.query("SELECT NOW()");
-    console.log("📌 PostgreSQL conectado com sucesso! →", r.rows[0].now);
+    const r = await pool.query("SELECT 1");
+    console.log("✅ PostgreSQL conectado no Render");
   } catch (err) {
     console.error("❌ Falha ao conectar no PostgreSQL:", err.message);
   }
 })();
 
-module.exports = { query, pool };
+module.exports = {
+  query,
+  pool
+};
