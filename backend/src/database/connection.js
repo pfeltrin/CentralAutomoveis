@@ -1,5 +1,3 @@
-// connection.js (PostgreSQL - Render Compatibility)
-
 require("dotenv").config();
 const { Pool } = require("pg");
 
@@ -17,7 +15,7 @@ const pool = new Pool({
 
   // ⭐ OBRIGATÓRIO PARA Render
   ssl: {
-    rejectUnauthorized: false
+    rejectUnauthorized: false  // Adiciona SSL para garantir a conexão no Render
   }
 });
 
