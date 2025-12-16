@@ -37,7 +37,7 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: process.env.NODE_ENV === "production", // ✔ Render usa HTTPS
+        secure: false, // Render sem HTTPS interto.
         httpOnly: true,
         maxAge: 1000 * 60 * 60 * 4 // 4h
     }
