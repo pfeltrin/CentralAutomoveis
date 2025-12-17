@@ -105,6 +105,5 @@ function adicionarEventoExcluir() {
 //   INICIALIZAR
 // ==============================
 document.addEventListener("DOMContentLoaded", () => {
-    carregarVeiculos();
     carregarVendidos();
 });
