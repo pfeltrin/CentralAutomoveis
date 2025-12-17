@@ -97,18 +97,29 @@ button:hover {
   text-align: center;
 }
 
-/* 📱 RESPONSIVO */
-@media (max-width: 900px) {
-  .login-container {
-    flex-direction: column;
-  }
+/* ===============================
+   RESPONSIVO - MOBILE
+================================ */
+@media (max-width: 768px) {
 
-  .login-image {
-    height: 220px;
-  }
+    .login-container {
+        flex-direction: column;
+    }
 
-  .login-form {
-    width: 100%;
-    height: calc(100vh - 220px);
-  }
+    /* Esconde a imagem no celular */
+    .login-image {
+        display: none;
+    }
+
+    .login-form {
+        width: 100%;
+        min-height: 100vh;
+        justify-content: center;
+        padding: 40px 20px;
+    }
+
+    .logo {
+        max-width: 180px;
+        margin-bottom: 30px;
+    }
 }
