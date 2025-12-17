@@ -60,13 +60,13 @@ input::placeholder {
 
 input:focus {
   outline: none;
-  border-color: #c00000;
+  border-color: #B00000;
 }
 
 /* BOTÃO */
 button {
   padding: 14px;
-  background: #c00000;
+  background: #B00000;
   color: #ffffff;
   border: none;
   border-radius: 6px;
@@ -77,21 +77,21 @@ button {
 }
 
 button:hover {
-  background: #900000;
+  background: #B00000;
 }
 
 /* ESQUECEU SENHA */
 .forgot {
   margin-top: 14px;
   font-size: 13px;
-  color: #ff4d4d;
+  color: #B00000;
   cursor: pointer;
   text-align: center;
 }
 
 /* ERRO */
 .erro {
-  color: #ff4d4d;
+  color: #B00000;
   font-size: 13px;
   margin-top: 12px;
   text-align: center;
