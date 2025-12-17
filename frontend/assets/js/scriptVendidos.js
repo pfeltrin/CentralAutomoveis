@@ -99,11 +99,4 @@ function adicionarEventoExcluir() {
 // ==============================
 // INICIALIZAR
 // ==============================
-//document.addEventListener("DOMContentLoaded", carregarVendidos);
-//
-// ==============================
-//   INICIALIZAR
-// ==============================
-document.addEventListener("DOMContentLoaded", () => {
-    carregarVendidos();
-});
+document.addEventListener("DOMContentLoaded", carregarVendidos);
