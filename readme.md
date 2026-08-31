@@ -1,8 +1,5 @@
-# 🚗 Central Automóveis
-
 <p align="center">
-  <img src="https://shields.io" alt="Status">
-  <img src="https://shields.io" alt="Maintained">
+# 🚗 Central Automóveis
 </p>
 
 > **Central Automóveis** é uma aplicação completa para cadastro, controle e gerenciamento de veículos para lojas de carros. O sistema permite administrar o estoque de automóveis de forma prática, integrando um backend robusto a um banco de dados relacional.
