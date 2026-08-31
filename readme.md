@@ -4,7 +4,6 @@
 
 > **Central Automóveis** é uma aplicação completa para cadastro, controle e gerenciamento de veículos para lojas de carros. O sistema permite administrar o estoque de automóveis de forma prática, integrando um backend robusto a um banco de dados relacional.
 
-🔗 **Acesse o projeto rodando na Vercel:** [central-automoveis.vercel.app](https://vercel.app)
 
 ---
 
