@@ -80,7 +80,7 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 ## 📹 Vídeo demonstrativo
 
 <p align="center">
-  <img src="frontend/assets/imgDemo.gif" width="800" alt="Demonstração do sistema">
+  <img src="frontend/assets/imgDemo.gif" width="900" alt="Demonstração do sistema">
 </p>
 ---
 
