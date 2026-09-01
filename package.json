@@ -1,7 +1,7 @@
 {
   "name": "centralautomoveis",
   "version": "1.0.0",
-  "description": "Sistema Central Automoveis",
+  "description": "Sistema desktop para gerenciamento de estoque e vendas de veículos",
   "main": "electron/main.js",
   "type": "commonjs",
   "scripts": {
@@ -13,7 +13,6 @@
   "author": "Patrick Feltrin",
   "license": "ISC",
   "dependencies": {
-    "connect-pg-simple": "^10.0.0",
     "connect-sqlite3": "^0.9.16",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
@@ -41,7 +40,7 @@
       "server.js",
       "backend/**/*",
       "frontend/**/*",
-      "database/**/*",
+      "database/db.js",
       "electron/**/*",
       "package.json",
       "!dist/**/*",
