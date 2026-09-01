@@ -3,94 +3,89 @@ const path = require("path");
 
 let mainWindow;
 
-// ==========================================
-// 🚀 INICIAR SERVIDOR BACKEND
-// ==========================================
 function startServer() {
     try {
         const serverPath = path.join(app.getAppPath(), "server.js");
-
         require(serverPath);
         console.log("✅ Servidor rodando de:", serverPath);
     } catch (error) {
         console.error("❌ Falha crítica ao iniciar backend:", error);
     }
 }
-// =========================================
-// 🖥️ CRIAR JANELA PRINCIPAL
-// =========================================
+
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1280,
         height: 800,
-        icon: path.join(__dirname, "build/icon.ico"), // Garante o ícone na barra de tarefas
+        icon: path.join(app.getAppPath(), "build", "icon.ico"),
         webPreferences: {
             nodeIntegration: false,
             contextIsolation: true,
-            sandbox: false, 
-            spellcheck: false, // Desativado para evitar travas de foco no Windows
+            sandbox: true,
+            spellcheck: false,
             backgroundThrottling: false
         }
     });
 
-    // SOLUÇÃO PARA O TECLADO: Prioriza a entrada de texto sobre os atalhos do sistema
-    mainWindow.webContents.on('before-input-event', (event, input) => {
-        if (input.type === 'keyDown' && !input.control && !input.alt && !input.meta) {
+    mainWindow.webContents.on("will-navigate", (event, url) => {
+        try {
+            const target = new URL(url);
+            if (target.hostname !== "127.0.0.1" || target.port !== "3000") {
+                event.preventDefault();
+            }
+        } catch {
+            event.preventDefault();
+        }
+    });
+
+    mainWindow.webContents.setWindowOpenHandler(() => ({ action: "deny" }));
+
+    mainWindow.webContents.on("before-input-event", (event, input) => {
+        if (input.type === "keyDown" && !input.control && !input.alt && !input.meta) {
             mainWindow.webContents.setIgnoreMenuShortcuts(true);
         } else {
             mainWindow.webContents.setIgnoreMenuShortcuts(false);
         }
     });
 
-    // ==========================================
-    // 🎯 CORREÇÃO DE FOCO (resolve campos "travados"
-    // ao abrir páginas ou modais - bug comum do
-    // Electron no Windows)
-    // ==========================================
-    mainWindow.webContents.on('did-finish-load', () => {
-    mainWindow.focus();
-    mainWindow.webContents.focus();
-
-    setTimeout(() => {
+    mainWindow.webContents.on("did-finish-load", () => {
         mainWindow.focus();
         mainWindow.webContents.focus();
-    }, 300);
-});
-
-    // Carregar a URL inicial
-    mainWindow.loadURL("http://localhost:3000/login").catch(() => {
-        console.log("Servidor ainda não respondeu, tentando recarregar...");
-        setTimeout(() => mainWindow.loadURL("http://localhost:3000/login"), 1000);
+        setTimeout(() => {
+            if (mainWindow) {
+                mainWindow.focus();
+                mainWindow.webContents.focus();
+            }
+        }, 300);
     });
 
-    mainWindow.on('closed', () => {
+    const loginUrl = "http://127.0.0.1:3000/login";
+    mainWindow.loadURL(loginUrl).catch(() => {
+        console.log("Servidor ainda não respondeu, tentando recarregar...");
+        setTimeout(() => {
+            if (mainWindow) mainWindow.loadURL(loginUrl);
+        }, 1000);
+    });
+
+    mainWindow.on("closed", () => {
         mainWindow = null;
     });
 }
 
-// ==========================================
-// ⚙️ CICLO DE VIDA DA APP
-// ==========================================
 app.whenReady().then(() => {
     startServer();
-
-    // Pequeno delay para garantir que o Express subiu antes da janela abrir
-    setTimeout(() => {
-        createWindow();
-    }, 1500);
+    setTimeout(createWindow, 1500);
 
     app.on("activate", () => {
         if (BrowserWindow.getAllWindows().length === 0) createWindow();
     });
 });
 
-// Limpeza e fechamento
 app.on("window-all-closed", () => {
     if (process.platform !== "darwin") app.quit();
 });
 
 app.on("will-quit", () => {
-    // Evita erros se o globalShortcut não estiver sendo usado
     try {
         globalShortcut.unregisterAll();
     } catch (e) {}
