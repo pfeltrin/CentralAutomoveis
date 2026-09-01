@@ -2,32 +2,40 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http://localhost:3000; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Central Automoveis</title>
-        <link rel="stylesheet" href="/assets/css/styleLogin.css">
-
-<body> 
-
+    <title>Central Automoveis</title>
+    <link rel="stylesheet" href="/assets/css/styleLogin.css">
+</head>
+<body>
     <div class="login-container">
-
-      <!-- LADO ESQUERDO (IMAGEM) -->
       <div class="login-image"></div>
 
-      <!-- LADO DIREITO (FORM) -->
       <div class="login-form">
-        <img src="/assets/logocentral.jpg" alt="Logo" class="logo">
+        <img src="/assets/logocentral.jpg" alt="Logo Central Automoveis" class="logo">
 
-        <form id="loginForm">
-          <input type="email" id="email" placeholder="E-mail" required>
-          <input type="password" id="senha" placeholder="Senha" required>
+        <div id="setupArea" hidden>
+          <h2>Primeiro acesso</h2>
+          <p class="ajuda">Crie o administrador desta instalação.</p>
+          <form id="setupForm">
+            <input type="text" id="setupNome" placeholder="Nome" minlength="2" maxlength="80" autocomplete="name" required>
+            <input type="email" id="setupEmail" placeholder="E-mail" autocomplete="username" required>
+            <input type="password" id="setupSenha" placeholder="Senha (mínimo 8 caracteres)" minlength="8" maxlength="128" autocomplete="new-password" required>
+            <input type="password" id="setupSenhaConfirmacao" placeholder="Confirme a senha" minlength="8" maxlength="128" autocomplete="new-password" required>
+            <button type="submit">Criar acesso</button>
+            <p id="msgSetup" class="erro"></p>
+          </form>
+        </div>
 
-          <button type="submit">Entrar</button>
-
-          <p id="msgErro" class="erro"></p>
-        </form>
+        <div id="loginArea" hidden>
+          <form id="loginForm">
+            <input type="email" id="email" placeholder="E-mail" autocomplete="username" required>
+            <input type="password" id="senha" placeholder="Senha" autocomplete="current-password" required>
+            <button type="submit">Entrar</button>
+            <p id="msgErro" class="erro"></p>
+          </form>
+        </div>
       </div>
-
     </div>
 
     <script src="/assets/js/scriptLogin.js" defer></script>
