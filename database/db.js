@@ -33,7 +33,8 @@ db.runAsync = (sql, params = []) => {
                 console.error("❌ SQL run erro:", err);
                 reject(err);
             } else {
-                resolve({ id: this.lastID, changes: this.changes });
+                // Mantém ambos os nomes para compatibilidade com rotas existentes.
+                resolve({ id: this.lastID, lastID: this.lastID, changes: this.changes });
             }
         });
     });
