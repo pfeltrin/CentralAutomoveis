@@ -79,8 +79,10 @@ Antes de começar, você vai precisar ter instalado em sua máquina:
 
 ## 📹 Vídeo demonstrativo
 
-
-
+CentralAutomoveis/frontend/assets
+<p align="center">
+  <img src="images/CentralAutomoveis/frontend/assets/imgDemo.gif" width="800" alt="Demonstração do sistema">
+</p>
 ---
 
 ## 👨‍💻 Desenvolvedor
