@@ -1,92 +1,96 @@
-<p align="center">
 # 🚗 Central Automóveis
-</p>
 
-**Central Automóveis** é uma aplicação completa para cadastro, controle e gerenciamento de veículos para lojas de carros. O sistema permite administrar o estoque de automóveis de forma prática, integrando um backend robusto a um banco de dados relacional.
+**Central Automóveis** é uma aplicação desktop para cadastro, controle de estoque, vendas e relatórios de veículos. O projeto utiliza Electron no desktop, Node.js/Express no backend local e SQLite para persistência dos dados.
 
-
----
-
-## 🛠️ Tecnologias Utilizadas
-
-O projeto foi desenvolvido utilizando as seguintes tecnologias:
+## 🛠️ Tecnologias
 
 ### Frontend
-- **HTML5 & CSS3** – Estruturação e estilização moderna da interface.
-- **JavaScript (ES6+)** – Dinamismo, consumo de API e manipulação do DOM.
+- **HTML5 & CSS3**
+- **JavaScript (ES6+)**
 
-### Backend & Banco de Dados
-- **Node.js** – Ambiente de execução do servidor.
-- **Express** – Framework para gerenciamento de rotas e APIs.
-- **PostgreSQL** – Banco de dados relacional para persistência de dados.
+### Backend e banco de dados
+- **Node.js**
+- **Express**
+- **SQLite**
+- **Express Session + SQLite Store**
 
-### Ferramentas de Deploy & Build
-- **Electron** – Arquitetura de empacotamento desktop (se aplicável).
-- **Vercel** – Hospedagem do ecossistema frontend.
+### Desktop
+- **Electron**
+- **Electron Builder / NSIS**
 
----
+## 🔐 Segurança
 
-## 🚀 Como Executar o Projeto Localmente
+- O backend aceita conexões somente em `127.0.0.1`.
+- Não existem credenciais padrão publicadas no código.
+- No primeiro uso, o sistema solicita a criação do administrador local.
+- As senhas são armazenadas com hash **scrypt**, salt aleatório e comparação segura.
+- O segredo das sessões é gerado localmente na primeira execução e não é versionado.
+- Bancos SQLite, sessões, backups, arquivos `.env` e logs são ignorados pelo Git.
+- Os dados do usuário ficam fora da pasta de instalação, em `AppData/Roaming/Central Automoveis` no Windows.
+
+## 🚀 Como executar localmente
 
 ### Pré-requisitos
-Antes de começar, você vai precisar ter instalado em sua máquina:
-- [Node.js](https://nodejs.org)
-- [PostgreSQL](https://postgresql.org)
+- Node.js
+- npm
 
-### Passo a Passo
+### Instalação
 
-1. **Clonar o repositório:**
-   ```bash
-   git clone https://github.com
-   cd CentralAutomoveis
-   ```
-
-2. **Configurar as variáveis de ambiente:**
-   Crie um arquivo `.env` na raiz do projeto (com base no seu arquivo `.env` local) e adicione as credenciais do seu banco de dados PostgreSQL e porta do servidor.
-
-3. **Instalar as dependências:**
-   ```bash
-   npm install
-   ```
-
-4. **Iniciar o banco de dados:**
-   Certifique-se de que o serviço do PostgreSQL está rodando e crie as tabelas necessárias utilizando seus scripts SQL de configuração do banco.
-
-5. **Iniciar a aplicação:**
-   Você pode rodar o script automatizado ou iniciar o servidor diretamente:
-   ```bash
-   # Executando via arquivo batch (Windows)
-   ./start_app.bat
-
-   # Ou iniciando o servidor Node diretamente
-   npm start
-   ```
-
----
-
-## 📂 Estrutura Principal do Projeto
-
-```text
-├── backend/            # Servidor Express e regras de negócio
-│   └── src/            # Código-fonte das rotas e controladores do backend
-├── frontend/           # Interface web (páginas, estilos e scripts do cliente)
-├── .env                # Variáveis de ambiente (ignorado no GitHub)
-├── ecosystem.config.js # Configuração para gerenciadores de processo (PM2)
-├── server.js           # Ponto de entrada principal do servidor Node
-├── start_app.bat       # Script de inicialização rápida no Windows
-└── vercel.json         # Configurações de deploy para a Vercel
+```bash
+git clone https://github.com/pfeltrin/CentralAutomoveis.git
+cd CentralAutomoveis
+npm install
+npm start
 ```
 
-## 📹 Vídeo demonstrativo
+Na primeira execução, a tela de login solicitará a criação do administrador da instalação. Não há usuário ou senha padrão.
+
+## 📦 Gerar instalador
+
+```bash
+npm run dist
+```
+
+O Electron Builder gera o instalador na pasta `dist/`.
+
+## 📂 Estrutura principal
+
+```text
+├── backend/
+│   └── src/
+│       └── routes/       # Rotas da API
+├── database/
+│   └── db.js             # Inicialização e acesso ao SQLite
+├── electron/
+│   └── main.js           # Processo principal do Electron
+├── frontend/
+│   ├── assets/           # CSS, JavaScript e imagens
+│   └── pages/            # Páginas HTML
+├── build/                # Recursos do instalador
+├── server.js             # Express, sessão e autenticação
+└── package.json
+```
+
+## 💾 Persistência local
+
+O banco principal, sessões e backups são criados em:
+
+```text
+%USERPROFILE%\AppData\Roaming\Central Automoveis\
+```
+
+Esses arquivos não fazem parte do repositório nem do instalador.
+
+## 📹 Demonstração
 
 <p align="center">
   <img src="frontend/assets/imgDemo.gif" width="900" alt="Demonstração do sistema">
 </p>
----
 
 ## 👨‍💻 Desenvolvedor
 
-* **Patrick Feltrin** - [https://github.com/pfeltrin](https://github.com/pfeltrin)
+**Patrick Feltrin** — [GitHub](https://github.com/pfeltrin)
 
 ---
-<p align="center">Desenvolvido para portfólio profissional 💻</p>
+
+Desenvolvido como projeto de portfólio profissional.
